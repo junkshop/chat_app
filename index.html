@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+	
+</head>
+	<script>
+		 function hello(){
+		 	this.x=-20;	
+		 	this.y = 100;
+		 	this.x1=-15;
+		 	this.y1 = -25;	
+		 	this.stat = 'hidden';
+		 	this.left = function left(ayd){
+			 	var elem = document.getElementById(ayd);
+			 	var me = this;
+			 	if(me.stat == 'hidden' ){me.x++;}else{me.x=-20;}
+			 	elem.style.left =  me.x+"%";
+			 	elem.style.msTransform = "rotate("+90+"deg)";
+			 	elem.style.WebkitTransform = "rotate("+90+"deg)";
+			 	elem.style.transform = "rotate("+90+"deg)"
+			 	elem.style.top = "30%";
+			 	if(me.x > 0){
+			 		me.stat = 'show';
+			 	}
+			 	else{
+			 		me.stat= 'hidden';
+			 	}
+			 	setTimeout(function(){me.left(ayd);}, 70);
+		 	}
+		 	this.bot = function bot (ayd){
+		 		var elem = document.getElementById(ayd);
+		 		var me = this;
+		 		if(me.stat == 'hidden' ){me.y--;}else{me.y=100;}
+			 	elem.style.top =  me.y+"%";
+			 	elem.style.left = "45%";
+			 	if(me.y < 77){
+			 		me.stat = 'show';
+			 	}
+			 	else{
+			 		me.stat= 'hidden';
+			 	}
+			 	setTimeout(function(){me.bot(ayd);},70);
+		 	}
+		 	this.right = function right(ayd){
+			 	var elem = document.getElementById(ayd);
+			 	var me = this;
+			 	if(me.stat == 'hidden' ){me.x1++;}else{me.x1=-15;}
+			 	elem.style.right=  me.x1+"%";
+			 	elem.style.msTransform = "rotate("+-90+"deg)";
+			 	elem.style.WebkitTransform = "rotate("+-90+"deg)";
+			 	elem.style.transform = "rotate("+-90+"deg)"
+			 	elem.style.top = "30%";
+			 	if(me.x1 > -1){
+			 		me.stat = 'show';
+			 	}
+			 	else{
+			 		me.stat= 'hidden';
+			 	}
+			 	
+			 	setTimeout(function(){me.right(ayd);}, 70);
+		 	}
+		 	this.top = function top(ayd){
+		 		var elem = document.getElementById(ayd);
+		 		var me = this;
+		 		if(me.stat == 'hidden' ){me.y1++;}else{me.y1=-25;}
+			 	elem.style.top =  me.y1+"%";
+			 	elem.style.left = "45%";
+			 	elem.style.msTransform = "rotate("+180+"deg)";
+			 	elem.style.WebkitTransform = "rotate("+180+"deg)";
+			 	elem.style.transform = "rotate("+180+"deg)"
+			 	if(me.y1 > -4){
+			 		me.stat = 'show';
+			 	}
+			 	else{
+			 		me.stat= 'hidden';
+			 	}
+			 	setTimeout(function(){me.top(ayd);}, 70);
+		 	}
+		}
+
+		// PATRICK CHUA 
+	</script>
+	<style type="text/css">
+			
+		img{
+			position:fixed;
+			visibility: hidden;
+		}
+		div{
+			display:block;
+			cursor: pointer;
+			margin:20% auto 0 auto;
+			width: 200px;
+			font-size: 2em;
+			font-style: bold;
+		}
+	</style>
+<body>
+	<div id="fu">
+		CLICK ME!
+	</div>
+	<img id="img1" src="img/fu.png"/>
+	<img id="img2" src="img/fu.png"/>
+    <img id="img3" src="img/fu.png"/>
+    <img id="img4" src="img/fu.png"/>
+    <script>
+    	var img1 = new hello();
+    	var img3 = new hello();
+    	var img2 = new hello();
+    	var img4 = new hello();
+    	function fuk(){ 
+	    	document.getElementById("img1").style.visibility = "visible";
+	    	document.getElementById("img2").style.visibility = "visible";
+	    	document.getElementById("img3").style.visibility = "visible";
+	    	document.getElementById("img4").style.visibility = "visible";
+	    	document.getElementById("fu").style.display = "none";
+	    	img1.left("img1");
+	    	img3.bot("img3");
+	    	img2.right("img2");
+	    	img4.top("img4");
+	    }
+	   	document.getElementById("fu").addEventListener("click",fuk);
+    </script>
+</body>
+</html>
